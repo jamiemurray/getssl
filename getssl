@@ -214,6 +214,7 @@
 # 2020-02-13 Fix bug with copying to all locations when creating RSA and ECDSA certs (2.20)
 # 2020-02-22 Change sign_string to use openssl asn1parse (better fix for #424)
 # 2020-02-23 Add dig to config check for systems without drill (ubuntu)
+# 2020-03-11 Added copy to vicibox locations
 # ----------------------------------------------------------------------------------------
 
 PROGNAME=${0##*/}
@@ -1927,9 +1928,9 @@ write_domain_template() { # write out a template file for a domain.
 	# Location for all your certs, these can either be on the server (full path name)
 	# or using ssh /sftp as for the ACL
 	#DOMAIN_CERT_LOCATION="/etc/ssl/${DOMAIN}.crt" # this is domain cert
-	#DOMAIN_KEY_LOCATION="/etc/ssl/${DOMAIN}.key" # this is domain key
+	DOMAIN_KEY_LOCATION="/etc/ssl/privkey.pem" # this is domain key
 	#CA_CERT_LOCATION="/etc/ssl/chain.crt" # this is CA cert
-	#DOMAIN_CHAIN_LOCATION="" # this is the domain cert and CA cert
+	DOMAIN_CHAIN_LOCATION="/etc/ssl/fullchain.pem" # this is the domain cert and CA cert
 	#DOMAIN_PEM_LOCATION="" # this is the domain key, domain cert and CA cert
 
 	# The command needed to reload apache / nginx or whatever you use
